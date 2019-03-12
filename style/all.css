@@ -10,3 +10,8 @@ div.tooltip {
     pointer-events: none;
     color:white;
 }
+
+.heroDots {
+    /* stroke-width:3px;
+    r:3px; */
+}
