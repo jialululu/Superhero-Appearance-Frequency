@@ -47,6 +47,7 @@ function parseEyeColor(eye) {
   else {
     result = "grey"
   }
+  // console.log(result)
   return result
 }
 
@@ -69,7 +70,7 @@ var graphSvg = d3.select('#demographic-graph')
       .attr('width',width);
 
 // print in console for debug
-console.log('test',graphSvg)
+// console.log('test',graphSvg)
 
 //define tooltip section
 var div = d3.select("body").append("div")
