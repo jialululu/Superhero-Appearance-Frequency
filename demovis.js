@@ -20,7 +20,7 @@ function parseHairColor(hair) {
   else {
     result = "grey"
   }
-  console.log(result)
+  // console.log(result)
   return result
 }
 
@@ -32,7 +32,7 @@ var graphSvg = d3.select('#demographic-graph')
       .attr('width',width);
 
 // print in console for debug
-console.log('test',graphSvg)
+// console.log('test',graphSvg)
 
 //define tooltip section
 var div = d3.select("body").append("div")
@@ -58,7 +58,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
     return counter[year];
   }
 
-  console.log("dataset",data)
+  // console.log("dataset",data)
   var items = graphSvg.selectAll('g')
         .data(data)
         .enter()
@@ -66,7 +66,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
         .append('g');
         //.attr("transform", "translate("+ padding.left + "," + (height-padding.bottom) + ")");
 
-  console.log("counter",counter);
+  // console.log("counter",counter);
 
   var timescaler = d3.scaleLinear().domain(xDomain).range([padding.left,width-padding.right]);
   var yScale1 = d3.scaleLinear().domain(yDomain1).range([height-padding.bottom,padding.top]);
