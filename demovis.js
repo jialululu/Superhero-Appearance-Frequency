@@ -12,6 +12,9 @@ var dotStrokeWidth = 3
 
 var yAxisSwitch = "default"
 
+//this is a test
+var testvar = 0;
+
 function parseHairColor(hair) {
   if (hair != "") {
     result = hair.split(" ")[0].toLowerCase()
