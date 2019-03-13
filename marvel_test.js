@@ -45,19 +45,19 @@ data = d3.json('Data/data_co.json', function(error, graph){
     // console.log("link",graph.links);
 
     // console.log(graph);
-    var idToNode = {};
-    graph.nodes.forEach(function(d){
-      idToNode[d.id] = d;
-    });
-    var filteredLinks = {};
-    graph.links.forEach(function(e){
-      if (Object.keys(idToNode).includes(e.source)&&Object.keys(idToNode).includes(e.target)) {
-        e.source = idToNode[e.source];
-        e.target = idToNode[e.target];
-      }
-    });
-    console.log(idToNode);
-    console.log("idToNode",graph.links);
+    // var idToNode = {};
+    // graph.nodes.forEach(function(d){
+    //   idToNode[d.id] = d;
+    // });
+    // var filteredLinks = {};
+    // graph.links.forEach(function(e){
+    //   if (Object.keys(idToNode).includes(e.source)&&Object.keys(idToNode).includes(e.target)) {
+    //     e.source = idToNode[e.source];
+    //     e.target = idToNode[e.target];
+    //   }
+    // });
+    // console.log(idToNode);
+    // console.log("idToNode",graph.links);
 
 
     graph.nodes.sort(function(a,b){return d3.descending(a.APPEARANCES, b.APPEARANCES);});
