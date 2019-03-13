@@ -18,14 +18,14 @@ var filterThreshold = 50;
 var margin = {
     top: 0,
     bottom:60,
-    left:50,
-    right:50
+    left:20,
+    right:20
 };
 
-var padding2 = {left:10,right:10};
+var padding2 = {left:30,right:30};
 
 var width2 = 1200 - margin.left - margin.right;
-var height2 =  600 - margin.top - margin.bottom;
+var height2 =  650 - margin.top - margin.bottom;
 
 var x = d3.scaleLinear().range([0, width2]);  // result x range
 
@@ -73,7 +73,7 @@ data = d3.json('Data/data_co.json', function(error, graph){
     // compute x, y coordinates for nodes
     for (i=0; i < graph.nodes.length; i++){
         node = graph.nodes[i];
-        node.x = padding2.left+i*(width2-padding2.left-padding2.right)/graph.nodes.length;  // slice width2 into n-1 parts, when i = 0, the first node is located on the origin
+        node.x = padding2.left+i*(width2)/graph.nodes.length;  // slice width2 into n-1 parts, when i = 0, the first node is located on the origin
         node.y = height2;
     }
 
@@ -98,10 +98,10 @@ data = d3.json('Data/data_co.json', function(error, graph){
         // .attr('cy', function(d){return height2-noderadius.range()[0]; })
         .attr('fill', function(d){return parseHairColor(d.HAIR);})
         .attr('id',function(d){return d.id;})
-        .attr('cx', function(d,i){return padding2.left+i*(width2-padding2.left-padding2.right)/filteredLength;})
+        .attr('cx', function(d,i){return padding2.left+i*(width2)/filteredLength;})
         .attr('cy', function(d,i){return height2;})
         .attr('r', function(d){return noderadius; }) //change circle radius based on the magnitute of links
-        .attr('z-index',2)
+        .style('z-index',2)
         .on('mouseover', function(d){
             var nodesToHighlight = graph.links.map(function(e){return e.source === d ?
                 e.target : e.target === d ? e.source : 0})
@@ -138,7 +138,7 @@ data = d3.json('Data/data_co.json', function(error, graph){
             //d3.select(this).attr('fill', 'rgba(100,107,110,0.8)');
             console.log(link)
             link
-              .attr('stroke-color', null)
+              .attr('stroke', 'rgba(100,107,110,0.8)')
               .attr('stroke-opacity',0.4);
             //console.log("node",node);
             node
@@ -159,28 +159,16 @@ data = d3.json('Data/data_co.json', function(error, graph){
         .attr('stroke','rgba(100,107,110,0.8)')
         .attr('stroke-opacity', '0.4')
         .attr('fill',"transparent")
-        .attr('z-index',-1)
+        .style('z-index',-1)
         .attr('d', function(d) {
           return ['M', d.source.x, height2, 'A', (d.source.x - d.target.x) / 2, ',',
               (d.source.x - d.target.x) / 2, 0, 0, ',',
               d.source.x < d.target.x ? 1 : 0, d.target.x, ',', height2].join(' ');
         })
-        .attr('z-index',1)
         .attr('stroke-width', function(d){return linkwidth2(d.count); })
         .on('mouseover', function(d){
-            // d3.select(this).attr('stroke', '#d69265')
-            // .attr('stroke-width2',function(d){return linkwidth2(d.count)*3;})
-            // .attr('stroke-opacity',1);
-            // console.log("selected",d3.select('#'+d.source.id));
-            // console.log("selected",d3.select('#'+d.target.id));
-            // d3.select('#'+d.source.id).attr('fill','#d69265');
-            // d3.select('#'+d.target.id).attr('fill','#d69265');
         })
         .on('mouseout', function(d){
-          // d3.select(this).attr('stroke', 'rgba(100,107,110,0.8)')
-          // .attr('stroke-width2',function(d){return linkwidth2(d.count);})
-          // .attr('stroke-opacity',0.4);
-          // node.attr('fill', 'rgba(100,107,110,0.8)');
         });
 
         });

@@ -11,52 +11,13 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- Import Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+
   <title>Marvel Universe</title>
 </head>
-
-
-<style>
-.button{
-  background-color: #ffffff;
-  border: 2px solid #e7e7e7;
-  color: black;
-  width: 130px;
-  height: 40px;
-  padding: 5px 10px;
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-}
-.button:hover {
-    text-decoration: none;
-}
-.button:active {
-    position: relative;
-    top: 1px;
-}
-.image-container {
-    width: 50%;
-    /*height: 500px;*/
-    position: center;
-}
-.image-container-button img {
-    /*position: relative;*/
-    padding-left: 50px;
-}
-/*.div1{ width:500px; margin:20px auto}
-.div1 a:hover img{filter:alpha(Opacity=50);-moz-opacity:0.5;opacity: 0.5} */
-
-.description {
-  padding:50px;
-}
-#footer {
-  padding:10px;
-  font-size: 10px;
-  border-top: 1px solid grey;
-  margin-top: 30px;
-}
-
-</style>
 
 
 <body style="margin: 30px; padding: 40px">
@@ -178,7 +139,7 @@
     Marvel series have always been a great hit. Yet there seems to be thousands of superheroes for readers to memorize, as well as the complicated relationships between them. We want to understand more about the heroes' demographic stereotypes as a group, not just the few main ones. And by analyzing the trends in creating Marvel characters, we also want to see whether there are changes in values widely recognized by the society through the years.
   </p>
   </br>
-  <a href="writeup.html" id="write-up-link">WRITE UP</a>
+  <a href="writeup.html" class="write-up-link">WRITE UP</a>
 </div>
 
   <br/>
@@ -186,37 +147,38 @@
   <!-- to be selected in javascript files -->
   <div id="demographic-graph">
     <h4 class="graphTitle">Demographic</h4>
-      <div class="row">
-        <div class="col-sm-4">
-          <center><img src="public/maggiel.svg" alt="" style = "width: 100px;height:100px" id="sortByHair" ></center>
+      <div id="controllers">
+          <div class="row">
+            <div class="col-sm-4">
+              <center><img src="public/maggiel.svg" alt="" style = "width: 100px;height:100px" id="sortByHair" ></center>
 
-        </div>
-        <div class="col-sm-4">
-          <center><img src="public/anciento.svg" alt="" style = "width: 100px;height:100px" id="sortByEye"></center>
-        </div>
-        <div class="col-sm-4">
-          <center> <img src="public/christinep.svg" alt="" style = "width: 100px;height:100px" id="sortBySex" ></center>
-        </div>
+            </div>
+            <div class="col-sm-4">
+              <center><img src="public/anciento.svg" alt="" style = "width: 100px;height:100px" id="sortByEye"></center>
+            </div>
+            <div class="col-sm-4">
+              <center> <img src="public/christinep.svg" alt="" style = "width: 100px;height:100px" id="sortBySex" ></center>
+            </div>
 
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-4">
+              <!-- <button class = "button" id="sortByHair">Sort By Hair Color</button> -->
+              <center><p style="font-size: 0.8rem">SORT BY HAIR COLOR</p></center>
+            </div>
+            <div class="col-sm-4">
+              <!-- <button class = "button" id="sortByEye">Sort By Eye Color</button> -->
+              <center><p style="font-size: 0.8rem">SORT BY EYE COLOR</p></center>
+            </div>
+            <div class="col-sm-4">
+              <!-- <button class = "button" id="sortBySex">Sort By Sex</button> -->
+              <center><p style="font-size: 0.8rem">SORT BY SEX</p></center>
+            </div>
+
+          </div>
       </div>
-
-      <div class="row">
-
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortByHair">Sort By Hair Color</button> -->
-          <center><p style="font-size: 0.8rem">SORT BY HAIR COLOR</p></center>
-        </div>
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortByEye">Sort By Eye Color</button> -->
-          <center><p style="font-size: 0.8rem">SORT BY EYE COLOR</p></center>
-        </div>
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortBySex">Sort By Sex</button> -->
-          <center><p style="font-size: 0.8rem">SORT BY SEX</p></center>
-        </div>
-
-      </div>
-
   </div>
 
     <!-- <div id="buttonContainer"> -->
@@ -227,10 +189,10 @@
 
   <div id="network-graph">
     <h4 class="graphTitle">Network</h4>
-    <div class="description">
+    <div class="description" id="inner">
       <p>
         Besides demographic distribution, we are also interesed in looking at the relationship between heroes. We selected the heroes with highest number
-        of appearance and show them as dots in a descending order. We use the hair color for color-coding here and show the co-ocurrence between heros using an arch.
+        of appearances and show them as dots in a descending order. We use the hair color for color-coding here and show the co-ocurrence between heros using an arch.
       </p>
     </div>
   </div>

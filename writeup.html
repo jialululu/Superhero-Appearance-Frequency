@@ -2,13 +2,17 @@
 <html>
   <head>
     <title>Design Rationale</title>
+    <!-- links to styling files -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
+    <link rel="stylesheet" type="text/css" href="style/all.css" media="all" />
   </head>
   <body>
     <div class="container my-5">
@@ -19,14 +23,20 @@
         Marvel series have always been a great hit. Yet there seems to be thousands of superheroes for readers to memorize, as well as the complicated relationships between them. We want to understand more about the heroes' demographic stereotypes as a group, not just the few main ones. And by analyzing the trends in creating Marvel characters, we also want to see whether there are changes in values widely recognized by the society through the years.
       </p>
       <p>
-        Here we used two datasets, both from Kaggle. One is<a href="https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking"> FiveThirtyEight Comic Characters Dataset </a>with characters' basic information including the year he/she was created, appearance frequency in comic books, hair color, eye color,  and gender. The other dataset is <a href="https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking">Marvel Universe the Social Network</a>which has the counts of interactions between characters. We used the two datasets to complement each other. A more detailed description on the acquiring and  limit of the dataset can be found in the links.
+        Here we used two datasets, both from Kaggle. One is<a href="https://www.kaggle.com/fivethirtyeight/fivethirtyeight-comic-characters-dataset"> FiveThirtyEight Comic Characters Dataset </a>with characters' basic information including the year he/she was created, appearance frequency in comic books, hair color, eye color,  and gender. The other dataset is <a href="https://www.kaggle.com/csanhueza/the-marvel-universe-social-network#hero-network.csv ">Marvel Universe the Social Network</a> which has the counts of interactions between characters. We used the two datasets to complement each other. A more detailed description on the acquiring and  limit of the dataset can be found in the links.
       </p>
       <h2>
         Rational for Design Decisions
-      </h1>
+      </h2>
       <p>
-        Since we have two datasets, one about basic demographic information and the other about interactions, we want to use two visualizations to answer two questions: is there a stereotype transformation through the years? Were the most frequent interactions between characters with some dominant features (either the gender or eye or hair color- which we think might indicate the race of the character)?
+        Since we have two datasets, one about basic demographic information and the other about interactions, we want to use two visualizations to answer two questions:
       </p>
+
+      <ul>
+        <li>Is there a stereotype transformation through the years? </li>
+        <li>Were the most frequent interactions between characters with some dominant features (either the gender or eye or hair color- which we think might indicate the race of the character)?</li>
+      </ul>
+
       <p>
         Therefore, with the two questions, we wanted to use a timeline for the first visualization with each character represented by a line, starting from the year he/she was created and ending at the year he/she deceased. Then we realized that by using lines, the variance of eye and hair colors would be really hard to recognize since the lines might be very thin to accommodate such large dataset. Besides, in the different years, the amount of characters created varies. By using continuous lines, we wouldn't be able to show the rise and fall, because the height of compiling lines would be the cumulative amount. So we changed our idea to using small circles to represent the heroes, and using colors to reflect the character's hair and eye color. In this way, we sort the circles by the heroes' gender or eye color, and the height of lined-up circles would reflect the amount of characters created in that single year.
       </p>
@@ -62,6 +72,14 @@
 
       </br>
       </br>
-      <a href="index.html" class="links">Back</a>
+      <div class="description">
+        <a href="index.html" class="write-up-link">BACK TO VISUALIZATION</a>
+      </div>
+
+      <div id="footer">
+        <p>Created for 6.894 Interactive Data Visualization at MIT by Jialu Tan, Qianhui Liang, Yichen Jia</p>
+      </div>
+
     </div>
+
   </body>

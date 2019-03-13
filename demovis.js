@@ -2,7 +2,7 @@ var height = 800
 var width = 1200
 var padding = {top:0,bottom:50,left:50,right:50}
 var appearanceFilterThreshold = 30
-var yDomain1 = [0,70]
+var yDomain1 = [0,75]
 var xDomain = [1939,2013]
 var divisions = {mn:500,nf:550}
 var sexDomain = {male:[0,55],female:[0,20],unknown:[0,5]}
@@ -17,16 +17,23 @@ var testvar = 0;
 
 
 function parseHairColor(hair) {
+  var noneValue = ["no","bald","nan","variable"];
   if (hair != "") {
     result = hair.split(" ")[0].toLowerCase()
-    if (result == "blond") {
+    if (result == "blond" || result == "strawberry") {
       result = "gold"
     }
     if (result == "white") {
       result = "lightgrey"
     }
     if (result == "brown") {
-      result = "sienna"
+      result = "#ac762f"
+    }
+    if (result == "auburn") {
+      result = "brown"
+    }
+    if (noneValue.includes(result)) {
+      result = "grey"
     }
   }
   else {
@@ -194,7 +201,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
          div.transition()
              .duration(100)
              .style("opacity",1);
-         div.html(d.name + "<br/>" + d.eye + "<br/>" + d.hair + d.year)
+         div.html(d.name + "<br/>" + d.eye + "<br/>" + d.hair + "<br/>" + d.year + "<br/>" + d.sex + "</br>" + d.appearance)
              .style("left", d3.event.pageX + 10 + "px")
              .style("top", d3.event.pageY + 10 + "px")
        })
