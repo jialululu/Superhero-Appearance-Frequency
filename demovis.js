@@ -271,7 +271,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
 
   d3.select("#sortBySex")
 		.on("click", function() {
-      document.getElementById("sortBySex").src="public/maggiel.svg";
+      document.getElementById("sortByHair").src="public/maggiel.svg";
       document.getElementById("sortByEye").src="public/anciento.svg";
       document.getElementById("sortBySex").src="public/christinep_d.svg";
       sexCounter = {};
