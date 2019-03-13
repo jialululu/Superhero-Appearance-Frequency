@@ -1,167 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- links to styling files -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="stylesheet" type="text/css" href="style/all.css" media="all" />
-
-  <!-- links to javascript files -->
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-  <title>Marvel Heros - 6.894 A3</title>
-</head>
-
-<body>
-  <!-- <h1>Marvel Heros - 6.894 A3</h1> -->
-  <div class="row" style = "margin-bottom: 15px; margin-top: 15px">
-        <div class="col-sm-1">
-          <center><img src="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/collector.svg" alt="" style = "width: 70px;height:70px" ></center>
-
-        </div>
-        <div class="col-sm-1">
-          <center><img src="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/ironm.svg" alt="" style = "width: 70px;height:70px" id="sortByEye"></center>
-
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/spiderman.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/tchakay.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/wandam.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/nakia.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-           <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/mayp.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/meredithq.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/obsidianc.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/ramonda.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/stanlee.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/wolfgangv.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-     
-</div>
-<div class="row" style = "margin-bottom: 15px; margin-top: 15px">
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/aletao.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img src="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/abub.svg" alt="" style = "width: 70px;height:70px" id="sortByEye"></center>
-
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/annem.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-6">
-          <center><h1>Marvel Cinematic Universe</h1></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/blackpk.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-        <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/darkelf.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-           <div class="col-sm-1">
-          <center><img ssrc="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2018/04/marvel-cinematic-universe-whos-who-interactive/images_doc/marvel/nodeIcons/fenris.svg"alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-         
-</div>
-  <p>some descriptions about the project here</p>
-
-  <p>Your deployed webpage should also include a write-up with the following components:
-  <br/>
-A rationale for your design decisions. How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
-An overview of your development process. Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?</p>
-
-  <!-- to be selected in javascript files -->
-  <div id="demographic-graph">
-    <!--  -->
-    <h2 class="graphTitle">Demographic Graph</h2>
-      <div class="row">
-        <div class="col-sm-4">
-          <center><img src="public/maggiel.svg" alt="" style = "width: 70px;height:70px" id="sortByHair"></center>
-
-        </div>
-        <div class="col-sm-4">
-          <center><img src="public/anciento.svg" alt="" style = "width: 70px;height:70px" id="sortByEye"></center>
-        </div>
-        <div class="col-sm-4">
-          <center> <img src="public/christinep.svg" alt="" style = "width: 70px;height:70px" id="sortBySex"></center>
-        </div>
-          
-      </div>
-
-
-      <div class="row">
-
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortByHair">Sort By Hair Color</button> -->
-          <center><p>SORT BY HAIR COLOR</p></center>
-        </div>
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortByEye">Sort By Eye Color</button> -->
-          <center><p>SORT BY EYE COLOR</p></center>
-        </div>
-        <div class="col-sm-4">
-          <!-- <button class = "button" id="sortBySex">Sort By Sex</button> -->
-          <center><p>SORT BY SEX</p></center>
-        </div>
-          
-      </div>
-    
-          
-        
-
-        
-          
-
-  </div>      
-          
+  <head>
+    <title>Design Rationale</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div class="container my-5">
+      <h2>
+        Design Rationale
+      </h2>
+      <p>
+        adfss
+      </p>
+      <p>
+        sda
+      </p>
+      <p>
+        sad
+      </p>
+      <h2>
+        Development Process
+      </h1>
+      <p>
+        Our development process followed a pretty standard outline:
+      </p>
+      <ol>
+        <li>Finding a dataset:</li>
+        <a href="https://www.kaggle.com/fivethirtyeight/fivethirtyeight-comic-characters-dataset">Kaggle: FiveThirtyEight Comic Characters Dataset</a>
+        <br/><a href="https://www.kaggle.com/csanhueza/the-marvel-universe-social-network#hero-network.csv Todo:">Kaggle: The Marvel Universe Social Network</a>
+        <li>Sanitizing data</li>
+        <li>Exploring data and D3</li>
+        <li>Creating initial framework</li>
+        <li>Ideating and implementing prototype design</li>
+        <li>Getting user feedback</li>
+        <li>Adding features and fleshing out project</li>
+      </ol>
+      <p>
+       adf
+      </p>
+      <p>
+        fadfad
+      </p>
+      <p>
+        adsf
+      </p>
+      <p>
+        asdfa
+      </p>
+      <p>
+        asdfa
+      </p>
 
 
 
-
-
-
-
-    <!--  -->
-
-
-
-
-    <!-- <h2 class="graphTitle">Demographic Graph</h2> -->
-    <!-- <div id="buttonContainer">
-  		<button id="sortByHair">Sort By Hair Color</button>
-  		<button id="sortByEye">Sort By Eye Color</button>
-  		<button id="sortBySex">Sort By Sex</button>
-  	</div> -->
-  <!-- </div> -->
-
-  <div id="network-graph">
-    <h2 class="graphTitle">Network Graph</h2>
-  </div>
-
-  <script src="demovis.js" charset="utf-8"></script>
-  <script src="marvel_test.js" charset="utf-8"></script>
-
-</body>
-
-</html>
+      <a href="index.html" class="large">Back</a>
+    </div>
+  </body>
