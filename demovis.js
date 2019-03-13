@@ -15,6 +15,7 @@ var yAxisSwitch = "default"
 //this is a test
 var testvar = 0;
 
+
 function parseHairColor(hair) {
   if (hair != "") {
     result = hair.split(" ")[0].toLowerCase()
@@ -224,6 +225,9 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
   //Sorting logic
 	d3.select("#sortByHair")
 		.on("click", function() {
+      document.getElementById("sortByHair").src="public/maggiel_d.svg";
+      document.getElementById("sortByEye").src="public/anciento.svg";
+      document.getElementById("sortBySex").src="public/christinep.svg";
       counter = {};
       //console.log("sort by hair")
 			items.sort(function(a, b) {
@@ -244,6 +248,9 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
 
     d3.select("#sortByEye")
   		.on("click", function() {
+      document.getElementById("sortByHair").src="public/maggiel.svg";
+      document.getElementById("sortByEye").src="public/anciento_d.svg";
+      document.getElementById("sortBySex").src="public/christinep.svg";
         counter = {};
         //console.log("sort by eye")
   			items.sort(function(a, b) {
@@ -264,6 +271,9 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
 
   d3.select("#sortBySex")
 		.on("click", function() {
+      document.getElementById("sortByHair").src="public/maggiel.svg";
+      document.getElementById("sortByEye").src="public/anciento.svg";
+      document.getElementById("sortBySex").src="public/christinep_d.svg";
       sexCounter = {};
       //console.log("sort by sex")
 			items
