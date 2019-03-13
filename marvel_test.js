@@ -51,7 +51,6 @@ data = d3.json('Data/data_co.json', function(error, graph){
     console.log("node",graph.nodes);
     console.log("link",graph.links);
 
-<<<<<<< HEAD
     // console.log(graph);
     // var idToNode = {};
     // graph.nodes.forEach(function(d){
@@ -66,7 +65,7 @@ data = d3.json('Data/data_co.json', function(error, graph){
     // });
     // console.log(idToNode);
     // console.log("idToNode",graph.links);
-=======
+
     // process data
     var idToNode = {};
     graph.nodes.forEach(function(d,i){
@@ -78,7 +77,6 @@ data = d3.json('Data/data_co.json', function(error, graph){
         e.source = idToNode[e.source];
         e.target = idToNode[e.target];
     });
->>>>>>> f75d71a4f63553339243b1a0fe915943ea0b878b
 
     //console.log("idToNode",graph.links);
 
