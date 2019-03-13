@@ -100,7 +100,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
       })
     }
   }
-  console.log("dataGroupByYear",dataGroupByYear);
+  // console.log("dataGroupByYear",dataGroupByYear);
 
   var unnestedData = [];
   //console.log("dataset",data)
@@ -119,7 +119,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
     });
   });
 
-  console.log("unnestedData",unnestedData);
+  // console.log("unnestedData",unnestedData);
   // calculate the y position of item based on counter
   var counter;
   function yPositionCounter(d,counter) {
@@ -149,13 +149,13 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
     return sexCounter[year];
   }
 
-  console.log(divisions.fm)
+  // console.log(divisions.fm)
   var timescaler = d3.scaleLinear().domain(xDomain).range([padding.left,width-padding.right]);
   var yScale1 = d3.scaleLinear().domain(yDomain1).range([height-padding.bottom,padding.top]);
   var yScaleM = d3.scaleLinear().domain(sexDomain.male).range([divisions.mn,padding.top]);
   var yScaleN = d3.scaleLinear().domain(sexDomain.unknown).range([divisions.nf,divisions.mn]);
   var yScaleF = d3.scaleLinear().domain(sexDomain.female).range([divisions.nf,height-padding.bottom]);
-  console.log("yScaleM",yScale1(30))
+  // console.log("yScaleM",yScale1(30))
 
   var counter = {};
   var items = graphSvg.selectAll('g')
@@ -225,7 +225,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
 	d3.select("#sortByHair")
 		.on("click", function() {
       counter = {};
-      console.log("sort by hair")
+      //console.log("sort by hair")
 			items.sort(function(a, b) {
 						return d3.ascending(a.hair, b.hair);
 				})
@@ -245,7 +245,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
     d3.select("#sortByEye")
   		.on("click", function() {
         counter = {};
-        console.log("sort by eye")
+        //console.log("sort by eye")
   			items.sort(function(a, b) {
   						return d3.ascending(a.eye, b.eye);
   				})
@@ -265,7 +265,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
   d3.select("#sortBySex")
 		.on("click", function() {
       sexCounter = {};
-      console.log("sort by sex")
+      //console.log("sort by sex")
 			items
 				.transition()
 				.delay(function(d, i) {
@@ -286,7 +286,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
         dots
         .attr("stroke",function(d) {return parseHairColor(d.hair)})
         .attr("fill",function(d) {return parseEyeColor(d.eye)})
-        console.log(sexCounter)
+        // console.log(sexCounter)
 		});
 
     // Define the axes
