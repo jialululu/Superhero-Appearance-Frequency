@@ -204,7 +204,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
        .on("mouseout", function(d) {
          div.transition()
           .duration(100)
-           .style("opacity", 0);
+          .style("opacity", 0);
        });
 
   // Define the axes

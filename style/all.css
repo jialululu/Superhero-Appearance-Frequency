@@ -11,7 +11,24 @@ div.tooltip {
     color:white;
 }
 
+div.tooltip-2 {
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: black;
+    border: 0px;
+    border-radius: 5px;
+    pointer-events: none;
+    color:white;
+}
+
 .heroDots {
     /* stroke-width:3px;
     r:3px; */
+}
+
+.nodes {
+  z-index:50;
 }
