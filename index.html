@@ -11,7 +11,7 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <title>Design Rationale</title>
+  <title>Marvel Universe</title>
 </head>
 
 
@@ -45,6 +45,17 @@
 }
 /*.div1{ width:500px; margin:20px auto}
 .div1 a:hover img{filter:alpha(Opacity=50);-moz-opacity:0.5;opacity: 0.5} */
+
+.description {
+  padding:50px;
+}
+#footer {
+  padding:10px;
+  font-size: 10px;
+  border-top: 1px solid grey;
+  margin-top: 30px;
+}
+
 </style>
 
 
@@ -161,19 +172,20 @@
 
 
   <!-- <h1>Marvel Heros - 6.894 A3</h1> -->
-  <p>some descriptions about the project here</p>
 
-  <p>Your deployed webpage should also include a write-up with the following components:
-  <br/>
-A rationale for your design decisions. How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
-An overview of your development process. Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?</p>
+<div class="description">
+  <p>
+    Marvel series have always been a great hit. Yet there seems to be thousands of superheroes for readers to memorize, as well as the complicated relationships between them. We want to understand more about the heroes' demographic stereotypes as a group, not just the few main ones. And by analyzing the trends in creating Marvel characters, we also want to see whether there are changes in values widely recognized by the society through the years.
+  </p>
+  </br>
+  <a href="writeup.html" id="write-up-link">WRITE UP</a>
+</div>
 
-<a href="index_2.html">Details on design description</a>
   <br/>
 <p></p>
   <!-- to be selected in javascript files -->
   <div id="demographic-graph">
-    <h4 class="graphTitle">Demographic Graph</h4>
+    <h4 class="graphTitle">Demographic</h4>
       <div class="row">
         <div class="col-sm-4">
           <center><img src="public/maggiel.svg" alt="" style = "width: 100px;height:100px" id="sortByHair" ></center>
@@ -214,14 +226,20 @@ An overview of your development process. Describe how the work was split among t
   	<!-- </div> -->
 
   <div id="network-graph">
-    <h4 class="graphTitle">Network Graph</h4>
+    <h4 class="graphTitle">Network</h4>
+    <div class="description">
+      <p>
+        Besides demographic distribution, we are also interesed in looking at the relationship between heroes. We selected the heroes with highest number
+        of appearance and show them as dots in a descending order. We use the hair color for color-coding here and show the co-ocurrence between heros using an arch.
+      </p>
+    </div>
   </div>
 
   <script src="demovis.js" charset="utf-8"></script>
   <script src="marvel_test.js" charset="utf-8"></script>
 
   <div id="footer">
-    <p>Made for 6.894 at MIT</p>
+    <p>Created for 6.894 Interactive Data Visualization at MIT by Jialu Tan, Qianhui Liang, Yichen Jia</p>
   </div>
 </body>
 

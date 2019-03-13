@@ -5,7 +5,7 @@ var groupSep =  10; // the distance between different nodes
 // var noderadius = d3.scaleSqrt().range([2,4]); // set five levels for result node radius, range is the result value
 var noderadius = 4;
 var noderadius2 = 6;
-var linkwidth = d3.scaleLinear().range([0.5, 10]);  // the thickest line should be no more than the smallest node diameter
+var linkwidth2 = d3.scaleLinear().range([0.5, 10]);  // the thickest line should be no more than the smallest node diameter
 var filterThreshold = 50;
 // the margin of the svg
 // var margin = {
@@ -16,22 +16,24 @@ var filterThreshold = 50;
 // };
 
 var margin = {
-    top: 3,
-    bottom:3,
-    left:5,
-    right:5
+    top: 0,
+    bottom:60,
+    left:50,
+    right:50
 };
 
-var width = 1200 - margin.left - margin.right;
-var height =  800 - margin.top - margin.bottom;
+var padding2 = {left:10,right:10};
 
-var x = d3.scaleLinear().range([0, width]);  // result x range
+var width2 = 1200 - margin.left - margin.right;
+var height2 =  600 - margin.top - margin.bottom;
+
+var x = d3.scaleLinear().range([0, width2]);  // result x range
 
 //create svg
 var svg = d3.select('#network-graph')
     .append('svg')
-    .attr('width', width + margin.left + margin.right )
-    .attr('height', height + margin.top + margin.bottom)
+    .attr('width', width2 + margin.left + margin.right )
+    .attr('height', height2 + margin.top + margin.bottom)
     .append('g');
 
 console.log(svg);
@@ -44,27 +46,11 @@ var div2 = d3.select("body").append("div")
     .style("z-index","100");
 
 // main visualization
-
 data = d3.json('Data/data_co.json', function(error, graph){
     if (error) throw error;
 
     console.log("node",graph.nodes);
     console.log("link",graph.links);
-
-    // console.log(graph);
-    // var idToNode = {};
-    // graph.nodes.forEach(function(d){
-    //   idToNode[d.id] = d;
-    // });
-    // var filteredLinks = {};
-    // graph.links.forEach(function(e){
-    //   if (Object.keys(idToNode).includes(e.source)&&Object.keys(idToNode).includes(e.target)) {
-    //     e.source = idToNode[e.source];
-    //     e.target = idToNode[e.target];
-    //   }
-    // });
-    // console.log(idToNode);
-    // console.log("idToNode",graph.links);
 
     // process data
     var idToNode = {};
@@ -87,14 +73,14 @@ data = d3.json('Data/data_co.json', function(error, graph){
     // compute x, y coordinates for nodes
     for (i=0; i < graph.nodes.length; i++){
         node = graph.nodes[i];
-        node.x = i*width/graph.nodes.length;  // slice width into n-1 parts, when i = 0, the first node is located on the origin
-        node.y = height;
+        node.x = padding2.left+i*(width2-padding2.left-padding2.right)/graph.nodes.length;  // slice width2 into n-1 parts, when i = 0, the first node is located on the origin
+        node.y = height2;
     }
 
-    // set node radius and link width
+    // set node radius and link width2
     // noderadius.domain(d3.extent(graph.nodes, function(d){return d.APPEARANCES;}));
-    linkwidth.domain(d3.extent(graph.links, function(d){return d.count;}));
-
+    linkwidth2.domain(d3.extent(graph.links, function(d){return d.count;}));
+    //var scaleX = d3.scaleLinear().domain([0,1]).range([padding2.left,width2-padding2.right]);
 
     var filteredLength = 0;
     // compute node
@@ -109,12 +95,13 @@ data = d3.json('Data/data_co.json', function(error, graph){
         })
         .append('circle')
         // .attr('cx', function(d){return d.x; })
-        // .attr('cy', function(d){return height-noderadius.range()[0]; })
+        // .attr('cy', function(d){return height2-noderadius.range()[0]; })
         .attr('fill', function(d){return parseHairColor(d.HAIR);})
         .attr('id',function(d){return d.id;})
-        .attr('cx', function(d,i){return i*width/filteredLength;})
-        .attr('cy', function(d,i){return height;})
+        .attr('cx', function(d,i){return padding2.left+i*(width2-padding2.left-padding2.right)/filteredLength;})
+        .attr('cy', function(d,i){return height2;})
         .attr('r', function(d){return noderadius; }) //change circle radius based on the magnitute of links
+        .attr('z-index',2)
         .on('mouseover', function(d){
             var nodesToHighlight = graph.links.map(function(e){return e.source === d ?
                 e.target : e.target === d ? e.source : 0})
@@ -136,8 +123,8 @@ data = d3.json('Data/data_co.json', function(error, graph){
                 return link_d.source === d | link_d.target === d ? 1 : 0.2;
             })
             .attr('stroke-width', function(link_d){
-                //console.log(linkwidth(link_d.count))
-                return link_d.source === d | link_d.target === d ? linkwidth(link_d.count)*3 : linkwidth(link_d.count);
+                //console.log(linkwidth2(link_d.count))
+                return link_d.source === d | link_d.target === d ? linkwidth2(link_d.count)*3 : linkwidth2(link_d.count);
             });
 
             div2.transition()
@@ -174,14 +161,15 @@ data = d3.json('Data/data_co.json', function(error, graph){
         .attr('fill',"transparent")
         .attr('z-index',-1)
         .attr('d', function(d) {
-          return ['M', d.source.x, height, 'A', (d.source.x - d.target.x) / 2, ',',
+          return ['M', d.source.x, height2, 'A', (d.source.x - d.target.x) / 2, ',',
               (d.source.x - d.target.x) / 2, 0, 0, ',',
-              d.source.x < d.target.x ? 1 : 0, d.target.x, ',', height].join(' ');
+              d.source.x < d.target.x ? 1 : 0, d.target.x, ',', height2].join(' ');
         })
-        .attr('stroke-width', function(d){return linkwidth(d.count); })
+        .attr('z-index',1)
+        .attr('stroke-width', function(d){return linkwidth2(d.count); })
         .on('mouseover', function(d){
             // d3.select(this).attr('stroke', '#d69265')
-            // .attr('stroke-width',function(d){return linkwidth(d.count)*3;})
+            // .attr('stroke-width2',function(d){return linkwidth2(d.count)*3;})
             // .attr('stroke-opacity',1);
             // console.log("selected",d3.select('#'+d.source.id));
             // console.log("selected",d3.select('#'+d.target.id));
@@ -190,7 +178,7 @@ data = d3.json('Data/data_co.json', function(error, graph){
         })
         .on('mouseout', function(d){
           // d3.select(this).attr('stroke', 'rgba(100,107,110,0.8)')
-          // .attr('stroke-width',function(d){return linkwidth(d.count);})
+          // .attr('stroke-width2',function(d){return linkwidth2(d.count);})
           // .attr('stroke-opacity',0.4);
           // node.attr('fill', 'rgba(100,107,110,0.8)');
         });

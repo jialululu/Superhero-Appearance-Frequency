@@ -1,11 +1,11 @@
 var height = 800
 var width = 1200
-var padding = {top:0,bottom:50,left:100,right:100}
+var padding = {top:0,bottom:50,left:50,right:50}
 var appearanceFilterThreshold = 30
-var yDomain1 = [0,60]
+var yDomain1 = [0,70]
 var xDomain = [1939,2013]
 var divisions = {mn:500,nf:550}
-var sexDomain = {male:[0,50],female:[0,20],unknown:[0,5]}
+var sexDomain = {male:[0,55],female:[0,20],unknown:[0,5]}
 
 var dotRadius = 3
 var dotStrokeWidth = 3
@@ -73,9 +73,6 @@ var graphSvg = d3.select('#demographic-graph')
       .attr('height',height)
       .attr('width',width);
 
-// print in console for debug
-// console.log('test',graphSvg)
-
 //define tooltip section
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -101,14 +98,12 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
       })
     }
   }
-  // console.log("dataGroupByYear",dataGroupByYear);
+  console.log("dataGroupByYear",dataGroupByYear);
 
   var unnestedData = [];
-  //console.log("dataset",data)
   var counterForUnnest = 0;
   dataGroupByYear.forEach(function(y) {
     y.values.forEach(function(hero) {
-        //console.log("hero",hero)
       unnestedData.push({
         name: hero.name,
         year: hero.Year,
@@ -165,6 +160,7 @@ d3.csv("Data/0_marvel-wikia-data.csv",function(error,data){
         .filter(function(d){return d.appearance >= appearanceFilterThreshold})
         .append('g')
         .attr("transform", function(d, i) {
+            //console.log('???',yScale1(yPositionCounter(d,counter)))
 			  		return "translate(0," + yScale1(yPositionCounter(d,counter)) + ")";
 				});
         //.attr("transform", "translate("+ padding.left + "," + (height-padding.bottom) + ")");
